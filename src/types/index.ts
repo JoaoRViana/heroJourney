@@ -1,5 +1,5 @@
 export type CardT={
-    powerStats: {
+    powerstats: {
         intelligence:number,
         strength:number,
         speed:number,
@@ -8,11 +8,11 @@ export type CardT={
         combat:number,
     },
     images:{
-        sm:String,
-        xs:String,
-        md:String,
-        lg:String,
+        sm:string,
+        xs:string,
+        md:string,
+        lg:string,
     },
-    name:String,
-    alignment:String,
+    name:string,
+    alignment:string,
 };
