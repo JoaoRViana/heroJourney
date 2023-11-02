@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import changeReducer from './features/ChangeTheme'
+import changeTheme from './features/changeTheme'
+import changeFilter from "./features/filters";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const store = configureStore({
   reducer: {
-    changeReducer,
+    changeTheme,
+    changeFilter,
   },
 });
 

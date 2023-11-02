@@ -13,4 +13,4 @@ export default function CardHeroe({info}:{info:CardT}){
             </h2>
         </div>
     )
-}
+}   
