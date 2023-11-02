@@ -1,4 +1,5 @@
 export type CardT={
+    id:number,
     powerstats: {
         intelligence:number,
         strength:number,

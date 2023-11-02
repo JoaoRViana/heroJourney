@@ -5,9 +5,10 @@ export const getAllHeroes = async()=> {
 }
 
 export const setHeroe = (heroeInfo:any)=>{
-    const {powerstats,images,name} = heroeInfo;
+    const {powerstats,images,name,id} = heroeInfo;
     const {alignment} = heroeInfo.biography;
     return {
+        id,
         powerstats,
         images,
         alignment,

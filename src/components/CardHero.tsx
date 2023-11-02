@@ -1,6 +1,6 @@
 import { CardT } from "@/types"
 
-export default function CardHeroe({info}:{info:CardT}){
+export default function CardHero({info}:{info:CardT}){
     const {intelligence,strength,speed,durability,power,combat} = info.powerstats
     const {name,images,alignment} = info
     const sumStats=  intelligence + strength + speed+durability+power+combat;
