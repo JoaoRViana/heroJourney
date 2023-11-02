@@ -1,8 +1,8 @@
 'use client'
-import CardHeroe from "@/components/CardHeroe";
 import HeroesSection from "@/components/HeroesSection";
 import { setingAllHeroes } from "@/utils";
 import { useEffect, useState, useCallback } from "react";
+import { Select,MenuItem, InputLabel,FormControl } from "@mui/material";
 
 export default function Home() {
   const [allHeroes, setAllHeroes] = useState([]);
@@ -16,7 +16,6 @@ export default function Home() {
   }
 
   const getFiltredHeroes = () => {
-    console.log(filter)
     if (filter.alignment === '' && filter.name === '') {
       setFiltredHeroes(allHeroes);
     } else {
@@ -38,12 +37,12 @@ export default function Home() {
     }
   }
 
-  const handleFilterNameChange = useCallback((e) => {
+  const handleFilterNameChange = useCallback((e:any) => {
     const updatedFilter = { ...filter, name: e.target.value };
     setFilter(updatedFilter);
   }, [filter]);
 
-  const handleFilterAlignmentChange = useCallback((e) => {
+  const handleFilterAlignmentChange = useCallback((e:any) => {
     const updatedFilter = { ...filter, alignment: e.target.value };
     setFilter(updatedFilter);
   }, [filter]);
@@ -65,13 +64,23 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        <input placeholder="find Heroe" onChange={handleFilterNameChange}></input>
-        <select onChange={handleFilterAlignmentChange} >
-          <option value={''}>All</option>
-          <option value={'good'}>Good</option>
-        <option value={'bad'}>Bad</option>
-        </select>
+      <div className="flex justify-around items-center h-20 w-full ">
+        <input placeholder="find Heroe" className="h-10  text-center" onChange={handleFilterNameChange}></input>
+        <FormControl variant="filled" sx={{m:1,width:120}} className={`${filter.alignment === 'good'? 'bg-green-200':''}
+        ${filter.alignment === 'bad'? 'bg-red-200':''}`}>
+          <InputLabel id="select-label" >Alignment</InputLabel>
+            <Select
+              labelId="select-label"  
+              id ="select-label-filled"
+              label="Heroes"
+              value={filter.alignment}
+              onChange={handleFilterAlignmentChange}>
+              <MenuItem value={''}>All</MenuItem>
+              <MenuItem value={'good'}>Good</MenuItem>
+              <MenuItem value={'bad'}>Bad</MenuItem>
+            </Select>
+          </FormControl>
+        
       </div>
       <div>
         <HeroesSection heroes={filtredHeroes} />
