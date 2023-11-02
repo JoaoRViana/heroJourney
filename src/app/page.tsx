@@ -34,15 +34,20 @@ export default function Home() {
           return e
         }
       }).filter((heroes)=>(heroes !== undefined))
-      console.log(newHeroes)
       setFiltredHeroes(newHeroes);
     }
   }
 
-  const handleFilterChange = useCallback((e) => {
+  const handleFilterNameChange = useCallback((e) => {
     const updatedFilter = { ...filter, name: e.target.value };
     setFilter(updatedFilter);
   }, [filter]);
+
+  const handleFilterAlignmentChange = useCallback((e) => {
+    const updatedFilter = { ...filter, alignment: e.target.value };
+    setFilter(updatedFilter);
+  }, [filter]);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -61,7 +66,12 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>
-        <input placeholder="find Heroe" onChange={handleFilterChange}></input>
+        <input placeholder="find Heroe" onChange={handleFilterNameChange}></input>
+        <select onChange={handleFilterAlignmentChange} >
+          <option value={''}>All</option>
+          <option value={'good'}>Good</option>
+        <option value={'bad'}>Bad</option>
+        </select>
       </div>
       <div>
         <HeroesSection heroes={filtredHeroes} />
