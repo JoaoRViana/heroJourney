@@ -1,20 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  firstHero: {},
-  secondHero: {},
+  heroes: []
 }
 
 export const chooseHeroes = createSlice({
   name: 'chooseHeroes',
   initialState,
   reducers: {
-    change: (state, action) => {
-      const newState = { ...state, ...action.payload };
-      return newState;
+    chooseHero: (state, action) => {
+      state.heroes = action.payload;
     }
   }
 })
 
-export const { change } = chooseHeroes.actions;
+export const { chooseHero } = chooseHeroes.actions;
 export default chooseHeroes.reducer;

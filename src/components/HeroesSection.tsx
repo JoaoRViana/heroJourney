@@ -1,15 +1,19 @@
 import CardHero from "./CardHero";
 import { setingAllHeroes } from "@/utils";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "@/redux/store";
 import { CardT } from "@/types";
+import { useDispatch } from "react-redux"
+import { useAppSelector } from "@/redux/store";
+import { AppDispatch } from "@/redux/store";
+import { chooseHero } from "@/redux/features/chooseHeroes";
+
 export default function HeroesSection(){
     const [allHeroes, setAllHeroes] = useState<CardT[]>([]);
     const [filtredHeroes, setFiltredHeroes] = useState<CardT[]>([]);
     const filter = useAppSelector((state)=> state.changeFilter)
     const [loading, setLoading] = useState(true);
     const [selectedHerosId,setSelectedHerosId] = useState<number[]>([])
-
+    const dispatch = useDispatch<AppDispatch>();
   
     const gettingAllHeroes = async () => {
       const all = await setingAllHeroes();
@@ -50,6 +54,12 @@ export default function HeroesSection(){
         getFiltredHeroes();
       }
     }, [loading, filter]);
+
+    useEffect(()=>{
+        const choosedHeroes = allHeroes.filter((e)=>(selectedHerosId.includes(e.id)));
+        dispatch(chooseHero(choosedHeroes))
+    },[selectedHerosId])
+
     const heroButton = (hero: CardT) => {
         if (selectedHerosId.length === 0) {
           setSelectedHerosId([hero.id]);
@@ -71,7 +81,7 @@ export default function HeroesSection(){
     return(
         <div className="flex flex-wrap justify-around">
             {filtredHeroes.map((e:CardT,i:any)=>(
-                <div key={i} className={`p-2 ${selectedHerosId.includes(e.id)?'border-2 border-red-200':''}`}>
+                <div key={i} className={`p-2 ${selectedHerosId.includes(e.id)?'border-2 border-cyan-500':''}`}>
                     <button id={`hero${e.id}`} onClick={(()=>(heroButton(e)))}>
                         <CardHero info={e}/>
                     </button>
