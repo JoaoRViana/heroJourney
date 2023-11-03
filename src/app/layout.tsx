@@ -4,7 +4,7 @@ import favIcon from './favIcon.png'
 
 
 export const metadata = {
-  title: 'Hero Journey',
+  title: "Hero's journey",
 }
 
 export default function RootLayout({

@@ -35,7 +35,7 @@ export default function BattleButton() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
       >
-      <Button color="error" onClick={closeModal}><CloseIcon /></Button>
+      <Button color="error" onClick={closeModal} className="absolute top-4 right-4"><CloseIcon /></Button>
         <Battle />
       </Modal>
       
