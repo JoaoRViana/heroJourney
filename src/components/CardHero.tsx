@@ -12,7 +12,7 @@ export default function CardHero({ info }: { info: CardT }) {
   return (
     <div className={`p-2 text-center rounded-lg ${theme.backgroundCard} font-bold py-2 px-4 rounded  border-b-4 hover:brightness-150`}>
       <h1>{name}</h1>
-      <img src={images.sm} alt={name} />
+      <img src={images.sm} alt={name} className="rounded-lg"/>
       <div className="flex  w-full justify-center p-2">
       <Image src={swordIcon} width={20} height={20} alt={name} />
       <h2>{sumStats}</h2>

@@ -3,12 +3,20 @@
 @tailwind utilities;
 
 
-.darkModeBackground{
-    background-color: black;
+.darkModeBackground {
+    background-image: url('../../public/assets/nighty-city.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
 }
+
 .lightModeBackground{
-    background-color: rgb(203 213 225);
+    background-image: url('../../public/assets/day-city.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
 .darkModeInput{
     background-color: rgb(203 213 225);
 }
@@ -29,6 +37,7 @@
     background-color: rgb(148 163 184);
     border-color: rgb(100 116 139);
 }
+
 .arrowUp{
     filter: opacity(0.4) drop-shadow(0 0 0 rgb(2, 255, 2)) drop-shadow(0 0 0 rgb(1, 255, 1));
 }

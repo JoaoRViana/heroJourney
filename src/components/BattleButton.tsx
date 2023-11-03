@@ -31,7 +31,7 @@ export default function BattleButton() {
         Battle
       </Button>
       <Modal
-        className={`${theme.background} ${theme.textColor} m-4 p-5 `}
+        className={`${theme.backgroundCard} ${theme.textColor} m-4 p-5 `}
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
       >
