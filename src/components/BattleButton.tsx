@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useAppSelector } from "@/redux/store";
 import Battle from './Battle'; 
+import Button from '@mui/material/Button';
+
 
 export default function BattleButton() {
   const heroes = useAppSelector((state) => state.chooseHeroes.heroes);
@@ -17,19 +19,20 @@ export default function BattleButton() {
 
   return (
     <div>
-      <button
+      <Button
+        variant="contained" disableElevation
         disabled={heroes.length < 2}
-        className="bg-teal-600 font-bold py-2 px-4 rounded border-b-4 hover:brightness-150
-        disabled:bg-slate-700 disabled:brightness-100 border-teal-700 disabled:border-b-0  disabled:text-gray-500"
+        className="bg-teal-600 font-bold py-2 px-4 rounded border-b-4 hover:brightness-150 border-teal-700
+        disabled:bg-slate-700 disabled:brightness-100  disabled:border-b-0  disabled:text-gray-500"
         onClick={handleBattleClick}
       >
         Battle
-      </button>
+      </Button>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
       >
-        <button onClick={closeModal}>Fechar</button>
+      <Button color="error" onClick={closeModal}>X</Button>
         <Battle />
       </Modal>
     </div>

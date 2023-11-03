@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import changeTheme from './features/changeTheme'
 import changeFilter from "./features/filters";
 import chooseHeroes from "./features/chooseHeroes";
+import heroColors  from "./features/heroColors";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     changeTheme,
     changeFilter,
     chooseHeroes,
+    heroColors,
   },
 });
 
