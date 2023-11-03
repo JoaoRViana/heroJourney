@@ -21,12 +21,12 @@ export default function FilterArea() {
 
     return (
         <div>
-            <div className="flex justify-around items-center h-20 w-full">
+            <div className="flex justify-around flex-wrap items-center p-2 w-full">
                 <input placeholder="Find Hero" className={`h-10 text-center ${theme.input}`} onChange={(e) => {
                     handleFilterNameChange(e.target.value);
                 }}></input>
 
-                <FormControl variant="filled" sx={{ m: 1, width: 120 }} className={`${filter.alignment === 'good' ? 'bg-green-200' : filter.alignment === 'bad' ? 'bg-red-200':theme.input} `}>
+                <FormControl variant="filled" sx={{ m: 1, width: 120 }} className={`${filter.alignment === 'good' ? 'bg-green-200' : filter.alignment === 'bad' ? 'bg-red-200':theme.input}`}>
                     <InputLabel
                         id="select-label"
                         sx={{

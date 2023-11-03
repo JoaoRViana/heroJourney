@@ -2,6 +2,8 @@
 'use client'
 import { useAppSelector } from "@/redux/store";
 import { CardT } from "@/types";
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 export default function Battle() {
   const heroes = useAppSelector((state) => (state.chooseHeroes.heroes as CardT[]));
@@ -22,9 +24,13 @@ export default function Battle() {
           <img alt={hero1?.name} src={hero1?.images.md}></img>
           <div className="flex flex-col justify-around text-xl text-center h-[600px]">
             {allStats.map((e) => (
-              <h1 key={`hero1${e}`} className="p-2">
+              <div key={`hero1${e}`} className="flex flex-wrap justify-center items-center">
+                <h1  className="p-2">
                 {hero1?.powerstats[e]}
               </h1>
+              {hero1?.powerstats[e]> hero2?.powerstats[e]?<div className="arrowUp"><ArrowUpwardIcon /></div>:<div className="arrowDown"><ArrowDownwardIcon/></div>}
+              </div>
+              
             ))}
           </div>
           <div className="flex flex-wrap justify-between w-full p-2 text-xl">
@@ -44,9 +50,13 @@ export default function Battle() {
         <div className="flex flex-wrap justify-between w-[30%]">
           <div className="flex flex-col justify-around text-xl text-center h-[600px]">
             {allStats.map((e) => (
-              <h1 key={`hero2${e}`} className="p-2">
+              <div key={`hero2${e}`} className="flex flex-wrap justify-center items-center">
+                  {hero1?.powerstats[e]< hero2?.powerstats[e]?<div className="arrowUp"><ArrowUpwardIcon /></div>:<div className="arrowDown"><ArrowDownwardIcon/></div>}
+                <h1  className="p-2">
                 {hero2?.powerstats[e]}
               </h1>
+            </div>
+            
             ))}
           </div>
           <img alt={hero2?.name} src={hero2?.images.md}></img>
