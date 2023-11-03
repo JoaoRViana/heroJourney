@@ -1,5 +1,6 @@
 'use client'
 import CardHero from "./CardHero";
+import Loading from "./Loading";
 import { filterHeroes, setingAllHeroes } from "@/utils";
 import { useEffect, useState } from "react";
 import { CardT } from "@/types";
@@ -66,14 +67,18 @@ export default function HeroesSection(){
     };
       
     return (
-        <div className="flex flex-wrap justify-around ">
-            {filtredHeroes.map((e: CardT, i: any) => (
+        <div className="flex flex-wrap justify-center items-center">
+            {loading?<Loading />:
+            <div className="flex flex-wrap justify-around ">
+                 {filtredHeroes.map((e: CardT, i: any) => (
                 <div key={i} className={`p-2 ${selectedHerosId.includes(e.id) ? 'bg-cyan-400 rounded-lg' : ''}`}>
                     <button id={`hero${e.id}`} onClick={() => heroButton(e)}>
                         <CardHero info={e} />
                     </button>
                 </div>
             ))}
+                </div>}
+           
         </div>
     )
 }

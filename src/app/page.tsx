@@ -9,7 +9,7 @@ export default function Home() {
   const theme = useAppSelector((state) => state.changeTheme.value);
 
   return (
-    <main className={`flex min-h-screen flex-col items-center justify-between p-24 ${theme.background}`}>
+    <main className={`flex min-h-screen flex-col items-center  p-24 ${theme.background}`}>
       <div className="w-full flex flex-col items-center ">
         <Header />
         <BattleButton />
