@@ -27,7 +27,6 @@ export const setingAllHeroes = async ()=>{
 }
 
 export const filterHeroes = (heroArray: CardT[], typeFilter: keyof CardT, valueFilter: string | number) : CardT[] => {
-    console.log(heroArray);
     if (typeFilter === 'gender' && typeof valueFilter === 'string' && valueFilter !== '') {
         return heroArray.filter((e) => e.gender === valueFilter);
     }
@@ -40,12 +39,3 @@ export const filterHeroes = (heroArray: CardT[], typeFilter: keyof CardT, valueF
     });
     return newHeroes;
 };
-
-
-export const createRandomColorRaces = ()=>{
-    const number1 = Math.floor(Math.random()*255)
-    const number2 = Math.floor(Math.random()*255)
-    const number3 = Math.floor(Math.random()*255)
-    const color = `bg-[rgb(${number1},${number2},${number3})]`
-    return color
-}

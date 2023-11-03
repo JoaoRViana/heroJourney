@@ -19,3 +19,12 @@ export type CardT={
     race:string,
     gender:string,
 };
+
+export type SelectT={
+    name:string,
+    options:[{value:string,name:string},{value:string,name:string},{value:string,name:string}],
+    colors:string[],
+    theme:string,
+    filter:Function,
+    value:string,
+}

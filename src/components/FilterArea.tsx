@@ -1,5 +1,5 @@
 'use client'
-import { Select, MenuItem, FormControl, InputLabel } from "@mui/material";
+import CustomSelect from "./CustomSelect";
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/redux/store";
 import { useAppSelector } from "@/redux/store";
@@ -10,16 +10,15 @@ export default function FilterArea() {
     const filter = useAppSelector((state) => state.changeFilter);
     const theme = useAppSelector((state) => state.changeTheme.value);
 
-
     const handleFilterNameChange = (e: string) => {
         dispatch(change({ name: e }));
     }
-
+    
     const handleFilterAlignmentChange = (e: string) => {
+        console.log(e)
         dispatch(change({ alignment: e }));
     }
 
-    
     const handleFilterGenderChange = (e: string) => {
         dispatch(change({ gender: e }));
     }
@@ -30,51 +29,10 @@ export default function FilterArea() {
                 <input placeholder="Find Hero" className={`h-10 text-center ${theme.input}`} onChange={(e) => {
                     handleFilterNameChange(e.target.value);
                 }}></input>
-
-                <FormControl variant="filled" sx={{ m: 1, width: 120 }} className={`${filter.alignment === 'good' ? 'bg-green-200' : filter.alignment === 'bad' ? 'bg-red-200':theme.input}`}>
-                    <InputLabel
-                        id="select-label-alignment"
-                        sx={{
-                            zIndex: 0,
-                        }}
-                    >
-                        Alignment
-                    </InputLabel>
-                    <Select
-                        labelId="select-label-alignment"
-                        id="select-label-alignment-filled"
-                        label="Alignment"
-                        value={filter.alignment}
-                        onChange={(e) => {
-                            handleFilterAlignmentChange(e.target.value);
-                        }}>
-                        <MenuItem value={''}>All</MenuItem>
-                        <MenuItem value={'good'}>Good</MenuItem>
-                        <MenuItem value={'bad'}>Bad</MenuItem>
-                    </Select>
-                </FormControl>
-                <FormControl variant="filled" sx={{ m: 1, width: 120 }} className={`${theme.input}`}>
-                    <InputLabel
-                        id="select-label-gender"
-                        sx={{
-                            zIndex: 0,
-                        }}
-                    >
-                        Gender
-                    </InputLabel>
-                    <Select
-                        labelId="select-label-gender"
-                        id="select-label-gender-filled"
-                        label="Gender"
-                        value={filter.gender}
-                        onChange={(e) => {
-                            handleFilterGenderChange(e.target.value);
-                        }}>
-                        <MenuItem value={''}>All</MenuItem>
-                        <MenuItem value={'Male'}>Male</MenuItem>
-                        <MenuItem value={'Female'}>Female</MenuItem>
-                    </Select>
-                </FormControl>
+               <CustomSelect info={{name:'alignment',value:filter.alignment,filter:handleFilterAlignmentChange,colors:['bg-green-200','bg-red-200'],
+               options:[{name:'All',value:''},{name:'Good',value:'good'},{name:'Bad',value:'bad'}],theme:theme.input}}/>
+               <CustomSelect info={{name:'gender',value:filter.gender,filter:handleFilterGenderChange,colors:['bg-blue-200','bg-pink-200'],
+               options:[{name:'All',value:''},{name:'Male',value:'Male'},{name:'Female',value:'Female'}],theme:theme.input}}/>
             </div>
         </div>
     )
