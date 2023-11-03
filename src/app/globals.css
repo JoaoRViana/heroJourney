@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.darkModeBackground{
+    background-color: black;
+}
+.lightModeBackground{
+    background-color: rgb(203 213 225);
+}
+.darkModeInput{
+    background-color: rgb(203 213 225);
+}
+.lightModeInput{
+    background-color: rgb(241 245 249);
+}
+.darkTextColor{
+    color: rgb(226 232 240);
+}
+.lightTextColor{
+    color: rgb(31 41 55);
+}
+.darkBackgroundCard{
+    background-color: rgb(107 114 128); 
+    border-color: rgb(75 85 99);
+}
+.lightBackgroundCard{
+    background-color: rgb(148 163 184);
+    border-color: rgb(100 116 139);
+}

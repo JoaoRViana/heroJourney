@@ -19,7 +19,6 @@ export default function HeroesSection(){
     const gettingAllHeroes = async () => {
       const all = await setingAllHeroes();
       const races: string[] = [];
-      const colorRaces: Record<string, string> = {};
       all.forEach((e: CardT) => {
         if (!races.includes(e.race)) {
           races.push(e.race);

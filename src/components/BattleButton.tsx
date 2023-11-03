@@ -1,12 +1,14 @@
+'use client'
 import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useAppSelector } from "@/redux/store";
 import Battle from './Battle'; 
 import Button from '@mui/material/Button';
-
+import CloseIcon from '@mui/icons-material/Close';
 
 export default function BattleButton() {
   const heroes = useAppSelector((state) => state.chooseHeroes.heroes);
+  const theme = useAppSelector((state) => (state.changeTheme.value));
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleBattleClick = () => {
@@ -29,10 +31,11 @@ export default function BattleButton() {
         Battle
       </Button>
       <Modal
+        className={`${theme.background} ${theme.textColor} m-2 p-5`}
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
       >
-      <Button color="error" onClick={closeModal}>X</Button>
+      <Button color="error" onClick={closeModal}><CloseIcon /></Button>
         <Battle />
       </Modal>
     </div>

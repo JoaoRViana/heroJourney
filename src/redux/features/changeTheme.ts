@@ -3,20 +3,24 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const lightMode = {
     name:'lightMode',
-    background: 'bg-slate-200',
-    textButton: 'text-black',
-    textGame:'text-black',
-    attemptText:'red',
-    circle:'bg-cyan-200',
+    background: 'lightModeBackground',
+    input:'lightModeInput',
+    textColor:'lightTextColor',
+    backgroundCard:'lightBackgroundCard',
+    backgroundButtonRepositorio:'bg-blue-500 hover:brightness-150 border-blue-700',
+    backgroundDeploy:'bg-green-500 hover:brightness-150 disabled:bg-gray-300 disabled:brightness-100 border-green-700 disabled:border-b-0',
+    backgroundButtonOverAll:'bg-yellow-500 hover:brightness-150 border-yellow-700',
 }
 
 const darkMode = {
     name:'darkMode',
-    background: 'bg-gray-800',
-    textButton: 'text-slate-300',
-    textGame:'text-slate-300',
-    attemptText:'red',
-    circle:'bg-purple-200',
+    background: 'darkModeBackground',
+    input:'darkModeInput',
+    textColor:'darkTextColor',
+    backgroundCard:'darkBackgroundCard',
+    backgroundButtonRepositorio:'bg-sky-500 hover:brightness-150 border-sky-700',
+    backgroundDeploy:'bg-teal-500 hover:brightness-150 disabled:bg-slate-700 disabled:brightness-100 border-teal-700 disabled:border-b-0',
+    backgroundButtonOverAll:'bg-amber-500 hover:brightness-150 border-amber-700',
 }
 
 
@@ -28,12 +32,9 @@ export const changeTheme = createSlice({
     name:'changeTheme',
     initialState,
     reducers:{
-        change:(state)=>{
-            const currentTheme =  state.value.name ==='lightMode'?darkMode:lightMode
-            return {
-                value:currentTheme
-            }
-        }
+        change: (state) => {
+            state.value = state.value.name === 'lightMode' ? darkMode : lightMode;
+          },
     }
 })
 

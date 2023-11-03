@@ -5,6 +5,7 @@ import { CardT } from "@/types";
 
 export default function Battle() {
   const heroes = useAppSelector((state) => (state.chooseHeroes.heroes as CardT[]));
+
   const hero1: CardT | undefined = heroes[0];
   const hero2: CardT | undefined = heroes[1];
   const allStats: ("intelligence" | "strength" | "speed" | "durability" | "power" | "combat")[] = ["intelligence", "strength", "speed", "durability", "power", "combat"];
