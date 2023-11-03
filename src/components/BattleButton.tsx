@@ -31,13 +31,14 @@ export default function BattleButton() {
         Battle
       </Button>
       <Modal
-        className={`${theme.background} ${theme.textColor} m-2 p-5`}
+        className={`${theme.background} ${theme.textColor} m-4 p-5 `}
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
       >
       <Button color="error" onClick={closeModal}><CloseIcon /></Button>
         <Battle />
       </Modal>
+      
     </div>
   );
 }
