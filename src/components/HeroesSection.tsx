@@ -1,6 +1,6 @@
 'use client'
 import CardHero from "./CardHero";
-import { createRandomColorRaces, setingAllHeroes } from "@/utils";
+import { filterHeroes, setingAllHeroes } from "@/utils";
 import { useEffect, useState } from "react";
 import { CardT } from "@/types";
 import { useDispatch } from "react-redux"
@@ -18,34 +18,14 @@ export default function HeroesSection(){
   
     const gettingAllHeroes = async () => {
       const all = await setingAllHeroes();
-      const races: string[] = [];
-      all.forEach((e: CardT) => {
-        if (!races.includes(e.race)) {
-          races.push(e.race);
-        }
-      });
       setAllHeroes(all);
     }
 
     const getFiltredHeroes = () => {
-        if (filter.alignment === '' && filter.name === '') {
-            setFiltredHeroes(allHeroes);
-        } else {
-            const validFilters: (keyof typeof filter)[] = ['name', 'alignment'];
-            const newHeroes = allHeroes.map((e) => {
-                const validate = validFilters.every((key) => {
-                    const filterValue = filter[key].toLowerCase();
-                    const heroValue = e[key].toLowerCase();
-                    return heroValue.includes(filterValue);
-                });
-                if (validate) {
-                    return e;
-                } else {
-                    return undefined;
-                }
-            }).filter((heroes) => heroes !== undefined) as CardT[];
-            setFiltredHeroes(newHeroes);
-        }
+        let newHeroes = filterHeroes(allHeroes,'alignment',filter.alignment)
+        newHeroes = filterHeroes(newHeroes,'name',filter.name)
+        newHeroes = filterHeroes(newHeroes,'gender',filter.gender);
+        setFiltredHeroes(newHeroes)
     }
 
     useEffect(() => {

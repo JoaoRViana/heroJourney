@@ -17,4 +17,5 @@ export type CardT={
     name:string,
     alignment:string,
     race:string,
+    gender:string,
 };

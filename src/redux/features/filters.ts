@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   name: '',
   alignment: '',
+  gender:'',
 }
 
 export const changeFilter = createSlice({

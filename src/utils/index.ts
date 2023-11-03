@@ -1,16 +1,18 @@
+import { CardT } from "@/types";
+
 export const getAllHeroes = async()=> {
  const api = await fetch("http://homologacao3.azapfy.com.br/api/ps/metahumans");
  const data = await api.json();
  return data
 }
 
-export const setHeroe = (heroeInfo:any)=>{
+export const setHero = (heroeInfo:any)=>{
     const {powerstats,images,name,id} = heroeInfo;
-    const {alignment,publisher} = heroeInfo.biography;
-    const {race} = heroeInfo.appearance
+    const {alignment} = heroeInfo.biography;
+    const {race,gender} = heroeInfo.appearance
     return {
         race,
-        publisher,
+        gender,
         id,
         powerstats,
         images,
@@ -21,7 +23,17 @@ export const setHeroe = (heroeInfo:any)=>{
 
 export const setingAllHeroes = async ()=>{
   const all = await getAllHeroes();
-  return all.map((e:any)=>(setHeroe(e)))
+  return all.map((e:any)=>(setHero(e)))
+}
+
+export const filterHeroes = (heroArray:CardT[] , typeFilter:string , valueFilter:string) =>{
+    console.log(heroArray)
+    if(typeFilter === 'gender' && valueFilter !== ''){
+        const newHeroes = heroArray.filter((e)=>(e.gender === valueFilter))
+        return newHeroes
+    }
+    const newHeroes = heroArray.filter((e)=>(e[typeFilter].includes(valueFilter)))
+    return newHeroes;
 }
 
 export const createRandomColorRaces = ()=>{
