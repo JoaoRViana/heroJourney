@@ -5,7 +5,7 @@ import swordIcon from "../../public/assets/sword_icon_138128.png"
 
 export default function CardHero({ info }: { info: CardT }) {
   const { intelligence, strength, speed, durability, power, combat } = info.powerstats;
-  const { name, images, alignment, race } = info;
+  const { name, images} = info;
   const sumStats = intelligence + strength + speed + durability + power + combat;
   const theme = useAppSelector((state) => state.changeTheme.value);
 

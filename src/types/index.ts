@@ -28,3 +28,12 @@ export type SelectT={
     filter:Function,
     value:string,
 }
+export type HeroBattleT = {
+    hero1: CardT ;
+    hero2: CardT ;
+    allStats: ("intelligence" | "strength" | "speed" | "durability" | "power" | "combat")[];
+    sumStatsHero1: number;
+    sumStatsHero2: number;
+    smallScreen: boolean;
+  };
+  
